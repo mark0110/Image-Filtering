@@ -5,7 +5,7 @@ import math
 
 
 def myConv():
-    cimg = cv.imread("1.jpg")
+    cimg = cv.imread("2.jpg")
     img = cv.cvtColor(cimg, cv.COLOR_BGR2GRAY)
     xKernal = cv.getGaussianKernel(ksize=13, sigma=2)
     yKernal = cv.getGaussianKernel(13, 2)
