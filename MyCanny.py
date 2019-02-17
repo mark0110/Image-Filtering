@@ -5,7 +5,11 @@ import time
 import scipy.signal
 
 def Mycanny(sigma):
+<<<<<<< Updated upstream
     xKernal = cv.getGaussianKernel(ksize=5, sigma=0.4)
+=======
+    xKernal = cv.getGaussianKernel(ksize=15, sigma=0.05)
+>>>>>>> Stashed changes
     yKernal = np.transpose(xKernal)
 
     img = cv.imread("3.jpg", cv.IMREAD_GRAYSCALE)
@@ -13,6 +17,7 @@ def Mycanny(sigma):
     conImg = scipy.signal.convolve(img, xKernal)
     conImg = scipy.signal.convolve(conImg, yKernal).astype(np.uint8)
 
+<<<<<<< Updated upstream
     sobel_y = cv.Sobel(conImg, cv.CV_16S, 0, 1, ksize=3)
     sobel_x = cv.Sobel(conImg, cv.CV_16S, 1, 0, ksize=3)
     sobel_y = cv.convertScaleAbs(sobel_y)
@@ -25,6 +30,12 @@ def Mycanny(sigma):
     cv.namedWindow("Image", cv.WINDOW_NORMAL)
     cv.resizeWindow("Image", 500, 500)
     cv.imshow("Image", zeroMax)
+=======
+    lopImg = cv.Laplacian(conImg, cv.CV_64F, 5)
+    lopImgFinal = cv.convertScaleAbs(lopImg)
+
+    cv.imshow("lop", lopImgFinal)
+>>>>>>> Stashed changes
     cv.waitKey(0)
     cv.destroyAllWindows()
 
