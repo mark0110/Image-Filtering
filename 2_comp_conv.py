@@ -12,7 +12,7 @@ conTime2 = [None] * 9
 
 
 for i in range(len(ksize)):
-    kernal = np.matmul(cv.getGaussianKernel(ksize=ksize[i], sigma=0.01), np.transpose(cv.getGaussianKernel(ksize[i], 0.01)))
+    kernal = np.matmul(cv.getGaussianKernel(ksize=ksize[i], sigma=2), np.transpose(cv.getGaussianKernel(ksize[i], 0.01)))
     start = time.time()
     con = scipy.signal.convolve2d(gray, kernal)
     end = time.time()
