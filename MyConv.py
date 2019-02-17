@@ -8,8 +8,7 @@ def myConv():
     cimg = cv.imread("2.jpg")
     img = cv.cvtColor(cimg, cv.COLOR_BGR2GRAY)
     xKernal = cv.getGaussianKernel(ksize=13, sigma=2)
-    yKernal = cv.getGaussianKernel(13, 2)
-    kernal = np.matmul(xKernal, np.transpose(yKernal))
+    kernal = np.matmul(xKernal, np.transpose(xKernal))
     newKernal = [0] * len(kernal)
     for i in range(len(kernal)):
         newKernal[i] = [0] * len(kernal[i])
@@ -28,9 +27,10 @@ def myConv():
             newerImg[i - padding][j - padding] = applyConv(arr, newKernal)
     filtImg = cv.filter2D(img, ddepth=-1, kernel=kernal)
     compared = abs(filtImg - newerImg)
-    cv.imshow("Image",compared)
+    cv.imshow("Image", compared)
     cv.waitKey(0)
     cv.destroyAllWindows()
+
 
 def applyConv(arr, kernal):
     total = 0
