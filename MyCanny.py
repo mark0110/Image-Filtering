@@ -23,9 +23,12 @@ def Mycanny(sigma):
     angleMat = (angleMat * 180/np.pi)
     zeroMax = getHighestIntensity(sobel_xy, angleMat)
 
+    Thres = getDoubleThreshold(zeroMax, 0.03, 1)
+
+
     cv.namedWindow("Image", cv.WINDOW_NORMAL)
     cv.resizeWindow("Image", 500, 500)
-    cv.imshow("Image", zeroMax)
+    cv.imshow("Image", Thres)
     cv.waitKey(0)
     cv.destroyAllWindows()
 
@@ -54,5 +57,18 @@ def getHighestIntensity(grad, angle):
             else:
                 zeroMax[i,j] = 0
     return zeroMax
+
+def getDoubleThreshold(grad, lowInt, highInt):
+    highThres = grad.max() * highInt
+    lowThres = highThres * lowInt
+
+    zeroMax = np.zeros((grad.shape[0], grad.shape[1]), dtype=np.uint8)
+
+    zeroMax = np.where(grad >= highThres, grad, np.int32(255))
+    zeroMax = np.where(grad < lowThres, grad, np.int32(0))
+    zeroMax = np.where(((grad <= highThres) & (grad >= lowThres)), grad, np.int32(25))
+
+    return zeroMax
+
 
 Mycanny(3)
