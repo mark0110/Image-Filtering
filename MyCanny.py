@@ -5,37 +5,27 @@ import time
 import scipy.signal
 
 def Mycanny(sigma):
-<<<<<<< Updated upstream
-    xKernal = cv.getGaussianKernel(ksize=5, sigma=0.4)
-=======
-    xKernal = cv.getGaussianKernel(ksize=15, sigma=0.05)
->>>>>>> Stashed changes
-    yKernal = np.transpose(xKernal)
-
     img = cv.imread("3.jpg", cv.IMREAD_GRAYSCALE)
+
+    xKernal = cv.getGaussianKernel(ksize=5, sigma=0.4)
+    yKernal = np.transpose(xKernal)
 
     conImg = scipy.signal.convolve(img, xKernal)
     conImg = scipy.signal.convolve(conImg, yKernal).astype(np.uint8)
 
-<<<<<<< Updated upstream
     sobel_y = cv.Sobel(conImg, cv.CV_16S, 0, 1, ksize=3)
     sobel_x = cv.Sobel(conImg, cv.CV_16S, 1, 0, ksize=3)
     sobel_y = cv.convertScaleAbs(sobel_y)
     sobel_x = cv.convertScaleAbs(sobel_x)
     sobel_xy = cv.addWeighted(sobel_x, 0.5, sobel_y, 0.5, 0)
-    lopImgFinal = cv.convertScaleAbs(sobel_xy)
+
     angleMat = np.arctan2(sobel_y, sobel_x)
     angleMat = (angleMat * 180/np.pi)
     zeroMax = getHighestIntensity(sobel_xy, angleMat)
+
     cv.namedWindow("Image", cv.WINDOW_NORMAL)
     cv.resizeWindow("Image", 500, 500)
     cv.imshow("Image", zeroMax)
-=======
-    lopImg = cv.Laplacian(conImg, cv.CV_64F, 5)
-    lopImgFinal = cv.convertScaleAbs(lopImg)
-
-    cv.imshow("lop", lopImgFinal)
->>>>>>> Stashed changes
     cv.waitKey(0)
     cv.destroyAllWindows()
 
@@ -64,4 +54,5 @@ def getHighestIntensity(grad, angle):
             else:
                 zeroMax[i,j] = 0
     return zeroMax
+
 Mycanny(3)
