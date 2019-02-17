@@ -8,8 +8,7 @@ def myConv():
     cimg = cv.imread("1.jpg")
     img = cv.cvtColor(cimg, cv.COLOR_BGR2GRAY)
     xKernal = cv.getGaussianKernel(ksize=13, sigma=2)
-    yKernal = cv.getGaussianKernel(13, 2)
-    kernal = np.matmul(xKernal, np.transpose(yKernal))
+    kernal = np.matmul(xKernal, np.transpose(xKernal))
     newKernal = [0] * len(kernal)
     for i in range(len(kernal)):
         newKernal[i] = [0] * len(kernal[i])
