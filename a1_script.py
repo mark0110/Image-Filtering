@@ -5,6 +5,7 @@ import convSpacialDomain as q1
 import Hybrid_Image as hi
 import PhaseSwap as ps
 import MyCanny as canny
+import Q1_5 as q15
 
 
 msg = 'Welcome to our Assignment 1!\n\nOur program will display a series of images and textboxs to answer the questions as outlined in the assignment document.\n\nBe advised that the execution time for some of the images is long.\n\nPress Okay to continue...'
@@ -19,7 +20,7 @@ popup.popupmsg(msg)
 q1.showImg1()
 q1.showImg2()
 
-msg = "The next 3 image's show the outputs for questions 3 4 and 5 from the first section.\n\nThe first image displayed is the convolved image using the code writtent by us (not using the built in command). The second image is the image convolved using the built in command. And finaly the third image will show the difference of the 2 images (or the lack of the difference).\n\nThe execution time is approximately 1:40 minutes.\n\nPress okay to continue..."
+msg = "The next 3 image's show the outputs for questions 3 4 and 5 from the first section.\n\nThe first image displayed is the convolved image using the code written by us (not using the built in command). The second image is the image convolved using the built in command. And finaly the third image will show the difference of the 2 images (or the lack of the difference).\n\nThe execution time is approximately 1:40 minutes.\n\nPress okay to continue..."
 popup.popupmsg(msg)
 
 m.myConv()
@@ -27,7 +28,9 @@ m.myConv()
 msg = "Answer for question 4 from section 1:\n\nIs there any difference between the output?\n\nNo difference is observed\n\nPress okay to continue..."
 popup.popupmsg(msg)
 
-msg = "Answer for question 5 from section 1:\n\nWhat is observed from the execution time between convolving an image using the 1D or 2D filter?\n\nTo be determined\n\nPress okay to continue..."
+time = q15.timeCalc()
+
+msg = "Answer for question 5 from section 1:\n\nWhat is observed from the execution time between convolving an image using the 1D or 2D filter?\n\nExecution time using 2 1D Gaussian kernels:\n"+str(time[0])[:5]+" ms\nExecution time using a 2D Guassian kernel:\n"+str(time[1])[:5]+" ms\n\nObservation:\nIt takes approximately twice as long to add a Gaussian kernel using 2 1D kernels then using a 2D kernel.\n\nPress okay to continue..."
 popup.popupmsg(msg)
 
 msg = "The next output will be a plot as asked in section 2 that compares the execution time of convolving an image in the spacial and frequency domains\n\nThe execution time is approximetly 00:20 minutes.\n\nPress okay to continue"
