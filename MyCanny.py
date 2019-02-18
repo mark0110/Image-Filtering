@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import time
 import scipy.signal
 
-def Mycanny(sigma):
-    img = cv.imread("3.jpg", cv.IMREAD_GRAYSCALE)
+def Mycanny(img, sigma, thres):
+    img = cv.imread(img, cv.IMREAD_GRAYSCALE)
 
-    xKernal = cv.getGaussianKernel(ksize=5, sigma=0.4)
+    xKernal = cv.getGaussianKernel(ksize=5, sigma=sigma)
     yKernal = np.transpose(xKernal)
 
     conImg = scipy.signal.convolve(img, xKernal)
@@ -69,6 +69,3 @@ def getDoubleThreshold(grad, lowInt, highInt):
     zeroMax = np.where(((grad <= highThres) & (grad >= lowThres)), grad, np.int32(25))
 
     return zeroMax
-
-
-Mycanny(3)

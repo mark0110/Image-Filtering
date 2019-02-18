@@ -27,6 +27,14 @@ def myConv():
             newerImg[i - padding][j - padding] = applyConv(arr, newKernal)
     filtImg = cv.filter2D(img, ddepth=-1, kernel=kernal)
     compared = abs(filtImg - newerImg)
+    cv.imshow("Image", newerImg)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
+    cv.imshow("Image", filtImg)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
     cv.imshow("Image", compared)
     cv.waitKey(0)
     cv.destroyAllWindows()
