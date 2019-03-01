@@ -3,6 +3,7 @@ import numpy as np
 import time
 import scipy.signal
 
+
 def timeCalc():
     img = cv.imread("img_q1.5.jpg", cv.IMREAD_GRAYSCALE)
     timeTrack = [None] * 2

@@ -17,14 +17,10 @@ def fSwap():
     combined2 = np.multiply(np.abs(city_ft), np.exp(1j*np.angle(face_ft)))
     image2 = np.real(np.fft.ifft2(combined2)).astype(np.uint8)
 
-    cv.namedWindow('Image 1', cv.WINDOW_NORMAL)
-    cv.resizeWindow('Image 1', 1000, 1000)
     cv.imshow("Image 1", image1)
     cv.waitKey(0)
     cv.destroyAllWindows()
 
-    cv.namedWindow('Image 2', cv.WINDOW_NORMAL)
-    cv.resizeWindow('Image 2', 1000, 1000)
     cv.imshow("Image 2", image2)
     cv.waitKey(0)
     cv.destroyAllWindows()

@@ -24,8 +24,6 @@ def my_canny(img, sigma, thres):
 
     thres = get_double_threshold(zero_max, 0.03, 1)
 
-    cv.namedWindow("Image", cv.WINDOW_NORMAL)
-    cv.resizeWindow("Image", 1000, 1000)
     cv.imshow("Image", thres)
     cv.waitKey(0)
     cv.destroyAllWindows()
