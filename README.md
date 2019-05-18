@@ -27,5 +27,5 @@ python3 a1_script.py
 ## Authors
 
 * [Mark Volfson](https://www.linkedin.com/in/mvolfson/)
-* [Michael Teitelbaum]
+* Michael Teitelbaum
 
