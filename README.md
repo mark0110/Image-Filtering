@@ -16,7 +16,7 @@ This application written in Python enhanced my understanding of image filtering.
 
 ## How to Run?
 
-Note: This appliation ues Python 3.7
+Note: This application uses Python 3.7
 
 Compile and run the python script in the terminal of your machine:
 
