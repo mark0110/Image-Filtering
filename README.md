@@ -1,6 +1,7 @@
 # Image Filtering
 
 CPS 843 - Computer Vision
+
 Course Assignment
 
 This application written in Python enhanced my understanding of image filtering.
